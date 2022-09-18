@@ -3,4 +3,5 @@ mongo_uri = 'mongodb://localhost:27017/blog'
 title = 'Meu Blog'
 extensions = [
     "blog.database:init_app",
+    "blog.commands:init_app",
 ]
