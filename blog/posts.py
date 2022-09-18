@@ -17,7 +17,8 @@ def get_post_by_slug(slug: str) -> dict:
 
 def update_post_by_slug(slug: str, data: dict[str, Any]) -> dict[str, Any]:
     # Todo: Se o título mudar, atulizar o slug (falhar se já existir)
-    return mongo.db.posts.find_one_and_update({"slug": slug}, {"$set": data})
+    updated = mongo.db.post.find_one_and_update({"slug": slug}, {"$set": data})
+    return updated
 
 
 def new_post(title: str, content: str, published: bool = True) -> str:
