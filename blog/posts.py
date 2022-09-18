@@ -21,16 +21,18 @@ def update_post_by_slug(slug: str, data: dict[str, Any]) -> dict[str, Any]:
     return updated
 
 
-def new_post(title: str, content: str, published: bool = True) -> str:
+def new_post(title: str, content: str, published: bool = True) -> dict[str, Any]:
     slug = slugify(title)
-    # Todo: verificar se post com esse slug já existe
-    mongo.db.post.insert_one(
-        {
-            'title': title,
-            'content': content,
-            'published': published,
-            'slug': slug,
-            'date': datetime.now(),
-        }
-    )
-    return slug
+    msg = {'error': 'There is a post with the same title.'}
+    if not get_post_by_slug(slug):
+        mongo.db.post.insert_one(
+            {
+                'title': title,
+                'content': content,
+                'published': published,
+                'slug': slug,
+                'date': datetime.now(),
+            }
+        )
+        msg = get_post_by_slug(slug)
+    return msg
