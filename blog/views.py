@@ -1,7 +1,7 @@
 from flask import Flask, Blueprint, abort, redirect, render_template, request, url_for
 from flask_simplelogin import login_required
 
-from blog.posts import get_all_posts, get_post_by_slug, new_post, update_post_by_slug
+from blog.posts import get_all_posts, get_post_by_slug, new_post
 
 bp = Blueprint("post", __name__, template_folder="templates")
 

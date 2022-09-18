@@ -8,5 +8,6 @@ extensions = [
     "blog.views:init_app",
     "blog.plugins:init_app",
     "blog.auth:init_app",
+    'blog.admin:init_app',
 ]
 secret_key = '0f8caf89703bf3857bef2477ff5e13bf5b515fee765d60c1217bb5cb9c7751ef'
