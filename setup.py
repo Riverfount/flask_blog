@@ -13,5 +13,6 @@ setup(
         'ipdb',
         'mistune',
         'python-slugify',
+        'flask-simplelogin',
     ]
 )

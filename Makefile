@@ -15,6 +15,8 @@ install:  ## Install in development mode.
 venv:  ## Create a virtualenv if it doesn't exists.
 	@python -m venv .venv
 
+gen_secret:  ## Generate a Secret Key
+	@python -c "import secrets; print(secrets.token_hex())"
 
 clean:  ## Clean unused files.
 	@find ./ -name '*.pyc' -exec rm -f {} \;
