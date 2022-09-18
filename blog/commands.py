@@ -14,7 +14,10 @@ def post():
 def new(title, content):
     """Add new post to database"""
     new = new_post(title, content)
-    click.echo(f'New post created {new}')
+    if 'error' not in new.keys():
+        click.echo(f'New post created {new}')
+    else:
+        click.echo(f'{new}')
 
 
 @post.command("list")
