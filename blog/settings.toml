@@ -4,4 +4,7 @@ title = 'Meu Blog'
 extensions = [
     "blog.database:init_app",
     "blog.commands:init_app",
+    "flask_bootstrap:Bootstrap",
+    "blog.views:init_app",
+    "blog.plugins:init_app",
 ]
