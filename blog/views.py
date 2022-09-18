@@ -1,4 +1,5 @@
 from flask import Flask, Blueprint, abort, redirect, render_template, request, url_for
+from flask_simplelogin import login_required
 
 from blog.posts import get_all_posts, get_post_by_slug, new_post, update_post_by_slug
 
@@ -20,6 +21,7 @@ def detail(slug):
 
 
 @bp.route('/new', methods=['GET', 'POST'])
+@login_required()
 def new():
     if request.method == 'POST':
         title = request.form.get('title')
@@ -27,7 +29,6 @@ def new():
         slug = new_post(title, content)
         return redirect(url_for('post.detail', slug=slug))
     return render_template('form.html.j2')
-
 
 
 def init_app(app: Flask):
